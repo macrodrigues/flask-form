@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- CSS only -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="static/css/styles.css">
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Mandali&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="logo">
+			<img src="static/images/logo.png" alt="">
+		</div>
+		<div class="about">
+			<p>FetchMyCrypto is the ultimate fusion between Data Science and the Web3. If you think you have the right skills to surf this digital wave 🌊, join our amazing remote team!</p>
+		</div>
+
+		{% extends "bootstrap/base.html" %}
+		{% import "bootstrap/wtf.html" as wtf %}
+		{% block content %}
+		<h1 class="login">Login</h1>
+		<div class="login-container">
+			<form method="POST" action="{{ url_for('login') }}" novalidate>
+				{{ form.csrf_token }}
+				<p>
+					{{ form.email.label }} <br> {{ form.email(size=30) }}
+					<br> 
+					{% for err in form.email.errors %}
+						<span style="color:red">{{ err }}</span>
+					{% endfor %}
+				</p>
+				<p>
+					{{ form.password.label }} <br> {{ form.password(size=30) }}
+					<br>
+					{% for err in form.password.errors%}
+						<span style="color:red">{{ err }}</span>
+					{% endfor %}
+					{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+						{% for category, message in messages %}
+							<span style="color:red">{{ message }}</span>
+						{% endfor %}
+					{% endif %}
+					{% endwith %}
+				</p>
+				{{ form.submit }}
+
+			</form>
+		</div>
+		{% endblock %}
+	</body>
+</html>
