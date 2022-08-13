@@ -27,3 +27,17 @@
     text-align: center;
 }
 
+.labels {
+    font-family: 'Mandali', sans-serif;
+    font-size: 15px;
+}
+
+.labels-container {
+    margin: 0 0 5px;
+}
+
+.error {
+    color: rgba(255, 51, 0, 0.625);
+    margin-top: 1px;
+    font-size: 10px;
+}
