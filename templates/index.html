@@ -1,16 +1,90 @@
-{% extends 'bootstrap/base.html' %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- CSS only -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="static/css/styles.css">
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Mandali&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="logo">
+			<img src="static/images/logo.png" alt="">
+		</div>
 
-{% block title %}
-Secrets
-{% endblock %}
-
-{% block content %}
-
-<div class="jumbotron">
-    <div class="container">
-    <h1>Welcome</h1>
-    <p>Are you ready to discover my secret?</p>
-    <a class="btn btn-primary btn-lg" href=" {{ url_for('login') }} ">Login</a>
-    </div>
-</div>
-{% endblock %}
+		{% extends "bootstrap/base.html" %}
+		{% import "bootstrap/wtf.html" as wtf %}
+		{% block content %}
+		<h1 class="login">Submition Form</h1>
+		<div class="login-container">
+			<form method="GET" novalidate>
+				<div class="container-1">
+					<p class = "labels-container-2">
+						{{ form.firstName.label(class_='labels') }} 
+						<br> 
+						{{ form.firstName(size=15, class_='form-control') }} 
+						{% for err in form.firstName.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+					<p class = "labels-container-2">
+						{{ form.lastName.label(class_='labels') }} 
+						<br> 
+						{{ form.lastName(size=15, class_='form-control') }} 
+						{% for err in form.lastName.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+				</div>
+                <div class="container-1">
+                    <p class = "labels-container-2">
+						{{ form.dateOfBirth.label(class_='labels') }} 
+						<br> 
+						{{ form.dateOfBirth(size=15, class_='form-control') }} 
+						{% for err in form.dateOfBirth.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+					<p class = "labels-container-2">
+						{{ form.phone.label(class_='labels') }} 
+						<br> 
+						{{ form.phone(size=15, class_='form-control') }} 
+						{% for err in form.phone.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+                </div>
+                <div class="container-1">
+                    <p class = "labels-container-2">
+						{{ form.country.label(class_='labels') }} 
+						<br> 
+						{{ form.country(size=15, class_='form-control') }} 
+						{% for err in form.country.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+					<p class = "labels-container-2">
+						{{ form.city.label(class_='labels') }} 
+						<br> 
+						{{ form.city(size=15, class_='form-control') }} 
+						{% for err in form.city.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+					<p class = "labels-container-2">
+						{{ form.zip.label(class_='labels') }} 
+						<br> 
+						{{ form.zip(size=5, class_='form-control') }} 
+						{% for err in form.zip.errors %}
+							<span class= 'error'>{{ err }}</span>
+						{% endfor %}
+					</p>
+                </div>
+				{{ form.submit_2(class_= 'btn btn-info submit') }}
+			</form>
+		</div>
+		{% endblock %}
+	</body>
+</html>
